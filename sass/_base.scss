@@ -35,3 +35,28 @@ body {
     font-weight: 300; // 300 included via google font
     line-height: 1.6;
 }
+
+// GRID LAYOUT
+.container {
+    // Used as overall grid layout container
+    display: grid;
+    /* Rows:
+    Header has 80% of viewport (always) -> 80vh
+    Features section should grow according to content size -> min-content (auto also possible)
+    Story is a a fucntion of the widht, should always take up 40% -> 40vw
+    Homes, Gallery, Footer should take up the height of its content -> repeat(3, min-content)
+    */
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    /*
+    8 column layout in the middle of the page
+    Width between content (min-content) and 140px (1140px / 8 rows)
+    Sidebar on the left (80px)
+    Center content between sidebard and end of the page (2 columns with remaining space -> 1fr); never smaller than 60px -> minmax 6rem
+    */
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; // 1140px/8 = 142px (max)
+
+    & > * {
+        padding: 40px;
+        font-size: 3rem;
+    }
+}
