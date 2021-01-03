@@ -31,9 +31,57 @@ body {
     Center content between sidebard and end of the page (2 columns with remaining space -> 1fr); never smaller than 60px -> minmax 6rem
     */
   grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
-  .container > * {
-    padding: 40px;
-    font-size: 3rem; }
+
+.mb-sm {
+  margin-bottom: 2rem; }
+
+.mb-md {
+  margin-bottom: 3rem; }
+
+.mb-lg {
+  margin-bottom: 4rem; }
+
+.mb-hg {
+  margin-bottom: 8rem; }
+
+.heading-1, .heading-2, .heading-3, .heading-4 {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400; }
+
+.heading-2 {
+  font-size: 4rem;
+  font-style: italic;
+  line-height: 1; }
+  .heading-2--light {
+    color: #f9f7f6; }
+  .heading-2--dark {
+    color: #54483A; }
+
+.heading-3 {
+  font-size: 1.6rem;
+  color: #c69963;
+  text-transform: uppercase; }
+
+.heading-4 {
+  font-size: 1.9rem; }
+  .heading-4--light {
+    color: #f9f7f6; }
+  .heading-4--dark {
+    color: #54483A; }
+
+.btn {
+  background-color: #c69963;
+  color: #fff;
+  border: none;
+  border-radius: none;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  transform: uppercase;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  transition: all .2s; }
+  .btn:hover {
+    background-color: #B28451; }
 
 .sidebar {
   background-color: #c69963;
@@ -49,8 +97,30 @@ body {
   grid-column: col-start 7 / full-end; }
 
 .features {
-  background-color: #aaa;
-  grid-column: center-start / center-end; }
+  grid-column: center-start / center-end;
+  margin: 15rem 0;
+  display: grid;
+  /* RESPONSIVE GRID
+    auto-fit = creates as many tracks as possible in defined width
+    Width of tracks should always stay between 250px and 1fr -> minmax(25rem, 1fr); CSS puts as many track inside the container as possible
+    */
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 6rem;
+  align-items: start; }
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem; }
+  .feature__icon {
+    fill: #c69963;
+    width: 4.5rem;
+    height: 4.5rem;
+    transform: translateY(-1rem);
+    grid-row: 1 / span 2; }
+  .feature__text {
+    font-size: 1.7rem; }
 
 .story__pictures {
   background-color: #c69963;
@@ -58,7 +128,23 @@ body {
 
 .story__content {
   background-color: #f9f7f6;
-  grid-column: col-start 5 / full-end; }
+  grid-column: col-start 5 / full-end;
+  padding: 6rem 12rem;
+  /*
+        // FLEXBOX for 1-dim layouts
+        display: flex; // Parent container for story__text
+        flex-direction: column; // Main axis now top-down
+        justify-content: center; // vertically centered
+        align-items: flex-start; // Content justified to left side
+        */
+  display: grid;
+  align-content: center;
+  justify-items: flex-start; }
+
+.story__text {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 4rem; }
 
 .homes {
   background-color: #101d2c;

@@ -54,9 +54,4 @@ body {
     Center content between sidebard and end of the page (2 columns with remaining space -> 1fr); never smaller than 60px -> minmax 6rem
     */
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; // 1140px/8 = 142px (max)
-
-    & > * {
-        padding: 40px;
-        font-size: 3rem;
-    }
 }

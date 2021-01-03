@@ -1,5 +1,6 @@
 .story {
     // No story block used in html
+
     &__pictures {
         background-color: $color-primary;
         grid-column: full-start / col-end 4;
@@ -8,6 +9,27 @@
     &__content {
         background-color: $color-grey-light-1;
         grid-column: col-start 5 / full-end;
+
+        padding: 6rem 12rem;
+
+        /*
+        // FLEXBOX for 1-dim layouts
+        display: flex; // Parent container for story__text
+        flex-direction: column; // Main axis now top-down
+        justify-content: center; // vertically centered
+        align-items: flex-start; // Content justified to left side
+        */
+
+        // Same solution with GRID
+        display: grid;
+        align-content: center;
+        justify-items: flex-start; // same als align-items (flexbox)
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 4rem; // Not reusable -> not implemented via helper class
     }
     
 }

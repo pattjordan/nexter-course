@@ -1,4 +1,40 @@
 .features {
-    background-color: $color-grey-light-2;
     grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+
+    // Manually create columns for subgrid -> subgrid function not supported in most browsers yet
+    display: grid; // Grid item also becomes grid container
+    // grid-template-columns: repeat(3, 1fr);
+    /* RESPONSIVE GRID
+    auto-fit = creates as many tracks as possible in defined width
+    Width of tracks should always stay between 250px and 1fr -> minmax(25rem, 1fr); CSS puts as many track inside the container as possible
+    */
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); 
+    grid-gap: 6rem;
+    align-items: start; // Features (= grid content) start at top; default (stretch) creates different whitespace between h4 and p
+}
+
+.feature {
+    // Feature is reusable -> could also be put into separate .scss file
+    display: grid;
+    grid-template-columns: min-content 1fr; // SVG item with fixed width, rest for heading
+    // Row does not be defined, because it should just take up the needed space
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary; // Colorize SVGs
+        width: 4.5rem;
+        height: 4.5rem; // = width
+        transform: translateY(-1rem); 
+
+        // Span over whole height
+        grid-row: 1 / span 2; // -1 would be the end of the EXPLICIT line, here; implicit grid -> have to use span 2 instead
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
 }
