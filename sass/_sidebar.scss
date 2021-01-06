@@ -1,7 +1,36 @@
 .sidebar {
     background-color: $color-primary;
     
-    // Position
+    // Position of sidebar
     grid-column: sidebar-start / sidebar-end;
     grid-row: 1 / -1;
+
+    // Position of button (3 lines)
+    display: flex;
+    justify-content: center;
+}
+
+.nav-btn {
+    border: none;
+    border-radius: 0;
+
+    // White bar (middle)
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+    margin-top: 4rem;
+    
+
+    &::before,
+    &::after {
+        // White bar (top & bottom)
+        background-color: #fff;
+        height: 2px;
+        width: 4.5rem;
+        content: "";
+        display: block;
+    }
+
+    &::before { transform: translateY(-1.5rem); }
+    &::after { transform: translateY(1.3rem); } // Line has 2px, include offset -> same width between lines
 }

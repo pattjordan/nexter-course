@@ -1,4 +1,66 @@
 .header {
-    background-color: $color-grey-dark-1;
+    // Header has already clearly defined height of 80vh (defined in .container)
     grid-column: full-start / col-end 6;
+    //background-color: $color-grey-dark-1;
+    background-image: linear-gradient(rgba($color-secondary, .93), rgba($color-secondary, .93)), url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+    padding: 8rem;
+    padding-top: 4rem;
+
+    display: grid;
+    // First row should use all remanining space (grid-row: 1fr); more space after button
+    // Size of other areas defined via gap property and row-sizes (min-content, 6rem)
+    grid-template-rows: 1fr min-content 6rem 1fr;
+    grid-template-columns: max-content; // Grid width equal to width of largest piece of content
+    grid-row-gap: 1.5rem;
+    justify-content: center;
+
+    &__logo {
+        height: 3rem;
+        justify-self: center;
+    }
+
+    &__btn {
+        // Position: top left corner
+        align-self: start;
+        justify-self: start;
+    }
+
+    &__seenon-text {
+        // Text can be treated as grid item
+        display: grid;
+        // Here: 3 grid items: 2 lines + text
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 1.5rem;
+        align-items: center;
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+        
+        // Two other grid items: Horizontal line before & after text
+        &::before,
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: currentColor; // current text color; here: $color-grey-light-2
+        }
+        
+    }
+
+
+    &__seenon-logos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+
+        img {
+            height: 2.5rem; // All with same height
+            filter: brightness(70%); // Image gets darker; default: 100%
+        }
+    }
+
+
 }

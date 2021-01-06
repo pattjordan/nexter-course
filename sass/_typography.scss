@@ -16,6 +16,9 @@
 
 .heading-1 {
     @extend %heading; // heading-1 will be "copied" to selector %heading; works the other way around than a mixin
+    font-size: 4.5rem;
+    color: $color-grey-light-1;
+    line-height: 1;
 }
 
 
@@ -54,7 +57,7 @@
     border-radius: none;
     font-family: $font-display;
     font-size: 1.5rem;
-    transform: uppercase;
+    text-transform: uppercase;
     padding: 1.8rem 3rem;
     cursor: pointer;
 
