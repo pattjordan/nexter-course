@@ -8,6 +8,15 @@
     // Position of button (3 lines)
     display: flex;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-large) {
+        // Move left vertical sidebar to the top
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        // Move button to top right corner
+        justify-content: flex-end;
+        align-items: center;
+    }
 }
 
 .nav-btn {
@@ -33,4 +42,13 @@
 
     &::before { transform: translateY(-1.5rem); }
     &::after { transform: translateY(1.3rem); } // Line has 2px, include offset -> same width between lines
+
+    @media only screen and (max-width: $bp-large) {
+        margin-top: 0;
+        margin-right: 3rem; // More space to border
+
+        // Decrease space
+        &::before { transform: translateY(-1.2rem); } 
+        &::after { transform: translateY(1rem); }
+    }
 }

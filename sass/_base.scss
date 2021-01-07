@@ -1,5 +1,5 @@
 // COLOR VARIABLES
-$color-primary: #c69963;
+$color-primary:#c69963;
 $color-primary-dark: #B28451;
 
 $color-secondary: #101d2c;
@@ -14,6 +14,11 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// RESPONSIVE BREAKPOINTS FOR MEDIA QUERIES
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px
+
 
 // Global reset
 *,
@@ -27,6 +32,10 @@ $font-display: 'Josefin Sans', sans-serif;
 html {
     box-sizing: border-box; // widht/height defines total size (margin & padding not added on top)
     font-size: 62.5%; // 10px/16px = 62.5% -> 1 rem = 10px
+
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%; // Entire layout will automatically decrease
+    }
 }
 
 body {
@@ -54,4 +63,17 @@ body {
     Center content between sidebard and end of the page (2 columns with remaining space -> 1fr); never smaller than 60px -> minmax 6rem
     */
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; // 1140px/8 = 142px (max)
+
+    @media only screen and (max-width: $bp-large) {
+        // Responsive grid definition -> remove sidebar
+        // Changes: Add a new row (6rem) and remove the first column ([sidebar-start] 8rem [sidebard-end])
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+        grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        // Changes: New row for realtors (min-content)
+        // Header fills 100% of viewport (substract 6rem of sidebar)
+        grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content 40vw repeat(3, min-content);
+    }
 }
