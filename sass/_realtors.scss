@@ -23,6 +23,11 @@
         @media only screen and (max-width: $bp-medium) {
             grid-template-columns: repeat(3, min-content max-content);
         }
+
+        @media only screen and (max-width: $bp-small) {
+            // Go back to original setting at that size -> put realtors below each other
+            grid-template-columns: min-content max-content;
+        }
     }
 
     &__img {

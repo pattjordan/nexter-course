@@ -18,6 +18,7 @@ $font-display: 'Josefin Sans', sans-serif;
 $bp-largest: 75em; // 1200px
 $bp-large: 62.5em; // 1000px
 $bp-medium: 50em; // 800px
+$bp-small: 37.5em; // 600px
 
 
 // Global reset
@@ -64,6 +65,10 @@ body {
     */
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; // 1140px/8 = 142px (max)
 
+    /* SHORT HAND
+    grid-template: 80vh min-content 40vw repeat(3, min-content) / [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    */
+
     @media only screen and (max-width: $bp-large) {
         // Responsive grid definition -> remove sidebar
         // Changes: Add a new row (6rem) and remove the first column ([sidebar-start] 8rem [sidebard-end])
@@ -74,6 +79,7 @@ body {
     @media only screen and (max-width: $bp-medium) {
         // Changes: New row for realtors (min-content)
         // Header fills 100% of viewport (substract 6rem of sidebar)
-        grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content 40vw repeat(3, min-content);
+        // Viewpport width of 5th row from 40vw to min-content
+        grid-template-rows: 6rem calc(100vh - 6rem); // Not needed anymore: "min-content min-content 40vw repeat(3, min-content)" -> all remaining rows are automatically based on content 
     }
 }
